@@ -13,16 +13,9 @@ import (
 
 func main() {
 	fmt.Print("Enter a grade:")
-	reader := bufio.NewReader(os.Stdin)
-	input, error := reader.ReadString('\n')
-	if error != nil {
-		log.Fatal(error)
-	}
-	fmt.Println(input)
-	grade, err := strconv.ParseFloat(strings.TrimSpace(input), 64)
+	grade, err := getFloat()
 	if err != nil {
-		fmt.Println("Should be a number")
-		log.Fatal()
+		log.Fatal(err)
 	}
 	var status string
 	if grade > 60.0 {
@@ -48,5 +41,19 @@ func main() {
 
 	response, err := http.Get("http://baidu.com/something_not_exists.html")
 	fmt.Println(response.Body, ":", err)
+}
 
+func getFloat() (float64, error) {
+	reader := bufio.NewReader(os.Stdin)
+	input, error := reader.ReadString('\n')
+	if error != nil {
+		return 0, error
+	}
+	fmt.Println(input)
+	grade, err := strconv.ParseFloat(strings.TrimSpace(input), 64)
+	if err != nil {
+		fmt.Println("Should be a number")
+		return 0, err
+	}
+	return grade, nil
 }
