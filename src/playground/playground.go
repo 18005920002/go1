@@ -43,6 +43,7 @@ func main() {
 	fmt.Println("Within budget?", total < float64(availableFunds))
 
 	var now time.Time = time.Now()
+	now.Year()
 	fmt.Println(now)
 	fmt.Println(reflect.TypeOf(now))
 	fmt.Println(now.Year())
