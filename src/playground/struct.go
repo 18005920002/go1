@@ -31,6 +31,12 @@ func main() {
 
 	p := minimumOrder("Part Desc")
 	showInfo(p)
+
+	fmt.Println("===========")
+	sx := defaultSubscriber("zhangsan")
+	printInfo(sx)
+	applyDiscount(sx)
+	printInfo(sx)
 }
 
 type part struct {
@@ -40,6 +46,30 @@ type part struct {
 type car struct {
 	name     string
 	topSpeed float64
+}
+
+type subscriber struct {
+	name   string
+	rate   float64
+	active bool
+}
+
+func printInfo(s *subscriber) {
+	fmt.Println(s.name)
+	fmt.Println(s.rate)
+	fmt.Println(s.active)
+}
+
+func defaultSubscriber(name string) *subscriber {
+	var s subscriber
+	s.name = name
+	s.rate = 5.99
+	s.active = true
+	return &s
+}
+
+func applyDiscount(s *subscriber) {
+	s.rate = 4.99
 }
 
 func showInfo(p part) {
