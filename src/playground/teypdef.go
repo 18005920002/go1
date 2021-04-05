@@ -33,7 +33,7 @@ func main() {
 	milk := Gallons(2)
 	fmt.Printf("%0.3f gallons equals %0.3f liters\n", milk, milk.ToLiters())
 	fmt.Printf("%0.3f gallons equals %0.3f milliliters\n", milk, milk.ToMilliliters())
-
+	fmt.Printf("%x gallons equals %x milliliters\n", &milk, &water)
 }
 
 func ToGallons(l Liters) Gallons {
